@@ -1,0 +1,40 @@
+<!-- Made by AJ with the help of ABDJ94 because we were bored. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var previous = getRate(0);
+            $("#check").click(function(){
+                $("#check").hide();
+                setInterval(function() {
+                console.log('checking');
+                getRate(previous);
+                }, 60000);
+            });
+
+            function getRate(previousRate){
+                $.ajax({
+                    url: "https://api.apilayer.com/exchangerates_data/latest?symbols=pkr&base=usd",
+                    headers: {"apikey": "8H9Uj2FEKP80rozYo5Y32jLwG4OnOy1Z"}
+                }).then(response => {
+                    previous = response.rates.PKR;
+                    console.log(previous);
+                    $("#rate").html(response.rates.PKR);
+                    if (previousRate < response.rates.PKR) {
+                        $('audio')[0].play();
+                    }
+                    return response.rates.PKR;
+                });
+            }
+        });
+
+    </script>
+</head>
+<body>
+<button id="check">START</button>
+<audio id="audio" src="ring.mp3"   ></audio>
+<h1 id="rate" style="color: red;font-size: 130px;position: absolute;left: 450px;"></h1>
+</body>
+</html>
