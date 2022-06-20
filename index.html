@@ -8,6 +8,7 @@
             var previous = getRate(0);
             $("#check").click(function(){
                 $("#check").hide();
+                $("#disclaimer").hide();
                 setInterval(function() {
                 console.log('checking');
                 getRate(previous);
@@ -34,7 +35,8 @@
 </head>
 <body>
 <button id="check">START</button>
+<p id="disclaimer">Click Start and <span style="color: red">ANTON</span>  will remind you every time <span style="color: green">PKR</span> loses its value.  </p>
 <audio id="audio" src="ring.mp3"   ></audio>
-<h1 id="rate" style="color: red;font-size: 130px;position: absolute;left: 400px;"></h1>
+<h1 id="rate" style="color: red;font-size: 130px;position: absolute;left: 450px;"></h1>
 </body>
 </html>
