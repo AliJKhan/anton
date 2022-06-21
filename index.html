@@ -18,7 +18,7 @@
             function getRate(previousRate){
                 $.ajax({
                     url: "https://api.apilayer.com/exchangerates_data/latest?symbols=pkr&base=usd",
-                    headers: {"apikey": "8H9Uj2FEKP80rozYo5Y32jLwG4OnOy1Z"}
+                    headers: {"apikey": "m3riM4jgPhCE05be4mWTbLni6663pEhw"}
                 }).then(response => {
                     previous = response.rates.PKR;
                     console.log(previous);
